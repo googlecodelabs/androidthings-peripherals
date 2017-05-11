@@ -28,8 +28,8 @@ import java.io.IOException;
 
 public class HomeActivity extends Activity {
     private static final String TAG = "HomeActivity";
-    private static final String BUTTON_PIN_NAME = "BCM21";
-    private static final String LED_PIN_NAME = "BCM6";
+    private static final String BUTTON_PIN_NAME = "BCM16";
+    private static final String LED_PIN_NAME = "BCM26";
 
     // GPIO connection to button input
     private Gpio mButtonGpio;
