@@ -17,6 +17,7 @@
  package com.example.androidthings.peripherals;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -28,8 +29,11 @@ import java.io.IOException;
 
 public class HomeActivity extends Activity {
     private static final String TAG = "HomeActivity";
-    private static final String BUTTON_PIN_NAME = "BCM16";
-    private static final String LED_PIN_NAME = "BCM26";
+    private static final String DEVICE_RPI = "rpi3";
+    private static final String BUTTON_PIN_NAME = Build.DEVICE.equals(DEVICE_RPI)
+            ? "BCM21" : "GPIO_174";
+    private static final String LED_PIN_NAME = Build.DEVICE.equals(DEVICE_RPI)
+            ? "BCM6" : "GPIO_34";
 
     // GPIO connection to button input
     private Gpio mButtonGpio;
