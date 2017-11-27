@@ -31,7 +31,7 @@ public class HomeActivity extends Activity {
     private static final String TAG = "HomeActivity";
     private static final String DEVICE_RPI = "rpi3";
     private static final String BUTTON_PIN_NAME = Build.DEVICE.equals(DEVICE_RPI)
-            ? "BCM21" : "GPIO_174";
+            ? "BCM21" : "GPIO6_IO14";
 
     // GPIO connection to button input
     private Gpio mButtonGpio;
