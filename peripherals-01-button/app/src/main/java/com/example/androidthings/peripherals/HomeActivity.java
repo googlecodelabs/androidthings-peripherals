@@ -23,7 +23,7 @@ import android.util.Log;
 
 import com.google.android.things.pio.Gpio;
 import com.google.android.things.pio.GpioCallback;
-import com.google.android.things.pio.PeripheralManagerService;
+import com.google.android.things.pio.PeripheralManager;
 
 import java.io.IOException;
 
@@ -40,12 +40,12 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        PeripheralManagerService service = new PeripheralManagerService();
-        Log.d(TAG, "Available GPIO: " + service.getGpioList());
+        PeripheralManager pioManager = PeripheralManager.getInstance();
+        Log.d(TAG, "Available GPIO: " + pioManager.getGpioList());
 
         try {
             // Create GPIO connection.
-            mButtonGpio = service.openGpio(BUTTON_PIN_NAME);
+            mButtonGpio = pioManager.openGpio(BUTTON_PIN_NAME);
 
             // Configure as an input, trigger events on every change.
             mButtonGpio.setDirection(Gpio.DIRECTION_IN);

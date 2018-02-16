@@ -25,7 +25,7 @@ import android.view.KeyEvent;
 import com.google.android.things.contrib.driver.button.Button;
 import com.google.android.things.contrib.driver.button.ButtonInputDriver;
 import com.google.android.things.pio.Gpio;
-import com.google.android.things.pio.PeripheralManagerService;
+import com.google.android.things.pio.PeripheralManager;
 
 import java.io.IOException;
 
@@ -46,8 +46,8 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        PeripheralManagerService service = new PeripheralManagerService();
-        Log.d(TAG, "Available GPIO: " + service.getGpioList());
+        PeripheralManager pioManager = PeripheralManager.getInstance();
+        Log.d(TAG, "Available GPIO: " + pioManager.getGpioList());
 
         try {
             // Initialize button driver to emit SPACE key events
@@ -62,7 +62,7 @@ public class HomeActivity extends Activity {
         }
 
         try {
-            mLedGpio = service.openGpio(LED_PIN_NAME);
+            mLedGpio = pioManager.openGpio(LED_PIN_NAME);
             // Configure as an output.
             mLedGpio.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);
         } catch (IOException e) {
