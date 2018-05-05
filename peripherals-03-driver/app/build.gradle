@@ -35,6 +35,6 @@ android {
 }
 
 dependencies {
-    compileOnly 'com.google.android.things:androidthings:+'
-    implementation 'com.google.android.things.contrib:driver-button:+'
+    compileOnly 'com.google.android.things:androidthings:1.0'
+    implementation 'com.google.android.things.contrib:driver-button:1.0'
 }
