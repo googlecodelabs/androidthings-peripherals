@@ -29,9 +29,9 @@ import java.io.IOException;
 
 public class HomeActivity extends Activity {
     private static final String TAG = "HomeActivity";
-    private static final String DEVICE_RPI = "rpi3";
-    private static final String BUTTON_PIN_NAME = Build.DEVICE.equals(DEVICE_RPI)
-            ? "BCM21" : "GPIO6_IO14";
+    private static final boolean IS_RPI =
+            Build.DEVICE.equals("rpi3") || Build.DEVICE.equals("rpi3bp");
+    private static final String BUTTON_PIN_NAME = IS_RPI ? "BCM21" : "GPIO6_IO14";
 
     // GPIO connection to button input
     private Gpio mButtonGpio;

@@ -31,11 +31,10 @@ import java.io.IOException;
 
 public class HomeActivity extends Activity {
     private static final String TAG = "HomeActivity";
-    private static final String DEVICE_RPI = "rpi3";
-    private static final String BUTTON_PIN_NAME = Build.DEVICE.equals(DEVICE_RPI)
-            ? "BCM21" : "GPIO6_IO14";
-    private static final String LED_PIN_NAME = Build.DEVICE.equals(DEVICE_RPI)
-            ? "BCM6" : "GPIO2_IO02";
+    private static final boolean IS_RPI =
+            Board.DEVICE.equals("rpi3") || Board.DEVICE.equals("rpi3bp");
+    private static final String BUTTON_PIN_NAME = IS_RPI ? "BCM21" : "GPIO6_IO14";
+    private static final String LED_PIN_NAME = IS_RPI ? "BCM6" : "GPIO2_IO02";
 
     // Driver for the GPIO button
     private ButtonInputDriver mButtonInputDriver;
